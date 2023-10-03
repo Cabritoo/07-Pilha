@@ -69,7 +69,7 @@ void inicializar()
 	}
 
 	topo = NULL;
-	cout << "Pilha inicializada \n";
+	cout << "Pilha inicializada \n"; 
 
 }
 
@@ -86,13 +86,39 @@ void push()
 	cout << "Digite o elemento: ";
 	cin >> novo->valor;
 	novo->prox = NULL;
+	if (topo == NULL) {
+		topo = novo;
+		topo->prox = NULL;
+	}
+	else {
+		novo->prox = topo;
+		topo = novo;
+	}
+
 
 
 }
 
 void pop()
 {
-
+	NO* aux = topo;
+	if (topo == NULL) {
+		cout << "Pilha vazia \n";
+	}
+	else 
+	{
+		topo = topo->prox;
+		free(aux);
+		aux = topo; 
+		if (topo == NULL) 
+		{
+			cout << "Todos os elementos foram excluidos \n";
+		} 
+		else
+		{
+			cout << "O novo topo é " << topo->valor << endl;
+		}
+	}
 	
 
 }
